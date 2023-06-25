@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS public.readers (
 
 CREATE TABLE IF NOT EXISTS public.rent (
     rent_id serial PRIMARY KEY,
-    data DATE
+    data DATE,
     FOREIGN KEY (reader_id) REFERENCES readers (reader_id) ON DELETE SET NULL,
     FOREIGN KEY (book_id) REFERENCES books (book_id) ON DELETE SET NULL
 );
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS public.books (
     code BIGINT NOT NULL,
     year VARCHAR(255) NOT NULL,
     volume VARCHAR(255) NOT NULL,
-    quantity VARCHAR(255) NOT NULL
+    quantity VARCHAR(255) NOT NULL,
     FOREIGN KEY (publisher_id) REFERENCES publisher (publisher_id) ON DELETE SET NULL
 );
 CREATE TABLE IF NOT EXISTS public.author (
