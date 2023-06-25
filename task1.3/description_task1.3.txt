@@ -1,0 +1,17 @@
+Работа с БД через запуск интерфейса psql в интерактивной среде
+docker exec -it test psql -U postgres
+
+Далее могут быть команды
+\l  - просомтр БД
+CREATE DATABASE ...
+и т.д.
+
+
+запуск контейнера
+docker run --rm --name test -e POSTGRES_PASSWORD=test -p 5432:5432 -d postgres
+
+Создание образа
+docker build -t test_image:latest .
+
+Запуск контейнера с созданием Тома (volume)
+docker run -d -p 5432:5432 -v /data:/var/lib/postgressql/data --name test_container test_image:latest
