@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS public.books (
     quantity VARCHAR(255) NOT NULL,
     FOREIGN KEY (publisher_id) REFERENCES publisher (publisher_id) ON DELETE SET NULL
 );
-
 CREATE TABLE IF NOT EXISTS public.rent (
     rent_id serial PRIMARY KEY,
     data DATE,
@@ -32,7 +31,7 @@ CREATE TABLE IF NOT EXISTS public.author (
     patronymic VARCHAR(255) NOT NULL,
     birth_year VARCHAR(255) NOT NULL
 );
-CREATE TABLE IF NOT EXISTS public.books-author (
+CREATE TABLE IF NOT EXISTS public.books_author (
     FOREIGN KEY (book_id) REFERENCES books (books_id) ON DELETE SET NULL,
     FOREIGN KEY (author_id) REFERENCES author (author_id) ON DELETE SET NULL
 );
