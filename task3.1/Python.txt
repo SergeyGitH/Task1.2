@@ -1,0 +1,75 @@
+1. Написать программу, которая удаляет из списка все элементы, стоящие на четных позициях.
+numbers = ["1", "2", "3", "4", "5", "6", "7"]
+index = numbers[1::2]
+print(index)
+
+2. Написать программу, которая считывает список слов и находит слова, содержащие более трех гласных букв.
+def FromArray(arr):
+    ThreeVowels = []
+    vovels = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
+    for E in arr:
+        vowelscCounter = 0
+        for strEl in E:
+            if strEl in vovels:
+                vowelscCounter += 1
+        if vowelscCounter >= 3:
+            ThreeVowels.append(E)
+    return(ThreeVowels)
+
+print(FromArray(['Написать',
+'программу,',
+'которая',
+'считывает',
+'список',
+'слов',
+'и',
+'находит',
+'слова,',
+'содержащие',
+'более',
+'трех',
+'гласных',
+'букв']))
+
+3. Написать программу, которая находит второй по величине элемент в списке.
+numbers = [11, 21, 3, 4, 55, 6, 7]
+numbers.sort()
+print(numbers[-2])
+
+4. Написать программу, которая удаляет из списка все дубликаты.
+list = [3, 4, 4, 5, 5, 8, 8, 10, 11]
+list_res = [] 
+for i in list:
+    if i not in list_res:
+       list_res.append(i)
+print(list_res)
+
+5. Написать программу, которая считывает данные из CSV-файла и создает словарь, где ключами являются значения в столбце «Name», а значениями — соответствующие им словари с информацией о поле, возрасте и зарплате:
+
+import csv
+def createDictFromCSV2(path):
+    with open(path, 'r', newline='') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter = ";")
+        dictOfDicts = {}
+        colNames = []
+        counter = 0
+        for row in spamreader:
+            if counter == 0:
+                colNames = row
+            else:
+                personInfoDict = {}
+                for index in range(len(row)):
+                    if index != 0:
+                        personInfoDict.update({colNames[index]: row[index]})
+                dictOfDicts.update({row[0]:personInfoDict})
+            counter +=1
+    return dictOfDicts
+
+print(createDictFromCSV2('salary.csv'))
+
+6. Написать программу, которая запрашивает у пользователя строку и выводит на экран все ее подстроки длиной не менее трех символов.
+text = input("Введите строку ")
+words = text.split()
+for i in words:
+  if len(i) > 2:
+    print(i)
