@@ -1,0 +1,54 @@
+Определить, сколько книг прочитал каждый читатель в текущем году. Вывести рейтинг читателей по убыванию.
+select a.fio, count(b.reader_id) from readers as a
+left join rent as b on a.reader_id = b.reader_id 
+where 1=1
+and data between date '2023-01-01' and date '2023-07-04'
+group by fio order by fio desc;
+
+
+Определить, сколько книг у читателей на руках на текущую дату.
+select a.fio, count(b.reader_id) from readers as a
+left join rent as b on a.reader_id = b.reader_id 
+where 1=1
+and data is NULL
+group by fio
+
+
+Определить читателей, у которых на руках определенная книга.
+select a.fio, c.code, last_name from readers as a
+left join rent as b on a.reader_id = b.reader_id
+left join books as c on b.book_id = c.book_id
+left join books_author as d on c.book_id = d.book_id
+left join author as e on d.author_id = e.author_id
+where 1=1 and last_name = 'Pushkin' and data is null
+
+Определите, какие книги на руках читателей.
+select a.fio, c.code, last_name from readers as a
+left join rent as b on a.reader_id = b.reader_id
+left join books as c on b.book_id = c.book_id
+left join books_author as d on c.book_id = d.book_id
+left join author as e on d.author_id = e.author_id
+where 1=1 and data is null
+
+
+Вывести количество должников на текущую дату
+select count(b.reader_id) as debt from readers as a
+left join rent as b on a.reader_id = b.reader_id 
+where 1=1
+and data is NULL
+
+
+Книги какого издательства были самыми востребованными у читателей? Отсортируйте издательства по убыванию востребованности книг.
+select name_publisher, count(b.book_id) from rent as a
+inner join books as b on a.book_id = b.book_id
+inner join publisher as c on b.publisher_id = c.publisher_id
+group by 1 order by 2 desc;
+
+
+Определить самого издаваемого автора.
+select b.last_name, c.volume
+from books_author as a
+left join author as b on a.author_id = b.author_id
+left join books as c on a.book_id = c.book_id 
+WHERE c.volume = (SELECT max(volume)
+               FROM books)
