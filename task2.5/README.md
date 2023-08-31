@@ -34,8 +34,3 @@ SELECT
     cast(((price * sales_fact) - (price * sales_plan)) AS numeric) AS income_fact_plan
 FROM fact_plan
 ORDER BY month, shop
-
-
-
-
-
