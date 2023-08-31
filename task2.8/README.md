@@ -7,8 +7,6 @@ CREATE TABLE IF NOT EXISTS product(
 ) 
 ENGINE = MergeTree()
 
-ENGINE = MergeTree()
-
 CREATE TABLE IF NOT EXISTS plan(
    plan_date Date,
    product_id UInt32,
