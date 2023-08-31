@@ -7,10 +7,6 @@ CREATE TABLE IF NOT EXISTS product(
 ) 
 ENGINE = MergeTree()
 
-CREATE TABLE IF NOT EXISTS shops(
-   shop_id UInt32,
-   shop_name String,
-) 
 ENGINE = MergeTree()
 
 CREATE TABLE IF NOT EXISTS plan(
