@@ -34,5 +34,9 @@ CREATE TABLE IF NOT EXISTS product(
     product_name VARCHAR(100),
     price INTEGER
 );
+CREATE TABLE IF NOT EXISTS shops(
+    shops_id INTEGER PRIMARY KEY,
+    shops_name VARCHAR(100),
+);
 
 
