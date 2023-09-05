@@ -10,24 +10,29 @@ CREATE TABLE IF NOT EXISTS shop_dns(
     date DATE,
     product_id INTEGER,
     sales_cnt INTEGER,
+    shops_id INTEGER,
     PRIMARY KEY (date, product_id),
-    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
+    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL,
+    FOREIGN KEY (shops_id) REFERENCES shops(shops_id) ON DELETE SET NULL
 );
-
 CREATE TABLE IF NOT EXISTS shop_mvideo(
     date DATE,
     product_id INTEGER,
     sales_cnt INTEGER,
+    shops_id INTEGER,
     PRIMARY KEY (date, product_id),
-    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
+    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL,
+    FOREIGN KEY (shops_id) REFERENCES shops(shops_id) ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS shop_sitilink(
     date DATE,
     product_id INTEGER,
     sales_cnt INTEGER,
+    shops_id INTEGER,
     PRIMARY KEY (date, product_id),
-    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL
+    FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE SET NULL,
+    FOREIGN KEY (shops_id) REFERENCES shops(shops_id) ON DELETE SET NULL
 );
 CREATE TABLE IF NOT EXISTS product(
     product_id INTEGER PRIMARY KEY,
