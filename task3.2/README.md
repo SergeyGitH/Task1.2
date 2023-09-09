@@ -1,11 +1,11 @@
-***
+# Задача 3.2
 '''
 import requests
 import pandas as pd
 import psycopg2
 from datetime import datetime
 
-#ПОдключение к существующей базе
+# ПОдключение к существующей базе
 conn = psycopg2.connect(host="localhost",
                         database="databaseSem",
                         user="username",
@@ -14,7 +14,7 @@ conn = psycopg2.connect(host="localhost",
 print("Successfully connected to the database.")
 cur = conn.cursor()
 
-#Формирование данных о курсе валют черех подключение по API
+# Формирование данных о курсе валют черех подключение по API
 params_dict = {'base':'RUB', 'symbols':'BTC', 'source':'crypto', 'places':'20'}
 response = requests.get('https://api.exchangerate.host/timeseries?start_date=2020-07-01&end_date=2020-07-30',
 params=params_dict)
